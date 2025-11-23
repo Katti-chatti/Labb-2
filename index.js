@@ -12,7 +12,7 @@ function displayCart(cartInfo) {
         cartContainer.innerHTML += `
                    <div>
                       <img class='cart-product-img' src='${e.image}'
-                      alt='bild på produkt' />
+                      alt='Product Picture' />
                       <p>${e.title}</p>
                       <p>${e.price}$</p>
                    </div>
@@ -30,7 +30,7 @@ function renderProducts(products) {
         const cards = document.createElement('div')
         cards.classList.add('cards')
         cards.innerHTML = `
-      <img src='${e.image}' alt='bild på produkt' />
+      <img src='${e.image}' alt='Product Picture' />
       <h3>${e.title}</h3>
       <p>$${e.price}</p>
       <button class='add-cart-btn'>Add To Cart</button>
