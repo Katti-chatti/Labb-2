@@ -4,6 +4,10 @@ body {
   color: #333;
 }
 
+  html, body {
+  overflow-x: hidden;
+}
+
 /* Min HTML kod i en container för att funka med navbaren */
 .page-container {
   max-width: 700px;
