@@ -14,7 +14,7 @@ function displayCart(cartInfo) {
                       <img class='cart-product-img' src='${e.image}'
                       alt='Product Picture' />
                       <p>${e.title}</p>
-                      <p>${e.price}$</p>
+                      <p>$${e.price}</p>
                    </div>
                    `
         counter.textContent = cartInfo.length
