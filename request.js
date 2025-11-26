@@ -104,13 +104,30 @@ form.addEventListener("submit", async (event) => {
   form.reset();
 });
 
-// -FUNKTION FÖR ATT TA BORT REQUESTS (DELETE)-
+// -FUNKTION FÖR ATT TA BORT REQUESTS (DELETE) *UPPDATERAD*-
 
-function deleteRequest(id) {
-  const updated = loadLocalRequests().filter((req) => req.id !== id);
-  saveLocalRequests(updated);
-  renderRequests(updated);
-  message.textContent = `Deleted request #${id}`;
+async function deleteRequest(id) {
+  const requests = loadLocalRequests();
+  const exists = requests.find((r) => r.id === id)
+
+  if (!exists) {
+    message.textContent = "Request not found."
+    return;
+  }
+
+try {
+  await fetch (`${apiUrl}/${id}`, {
+    method: "DELETE"
+  });
+  console.log("Deleted from API", id)
+} catch(error) {
+  console.warn("Failed to delete from API")
+}
+
+//Ta bort det lokalt och uppdaterar
+const updated = requests.filter((req) => req.id !== id)
+saveLocalRequests(updated)
+renderRequests(updated)
 }
 
 //Laddar in allt vid sidstart
